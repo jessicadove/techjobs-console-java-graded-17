@@ -119,20 +119,18 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
-        // iterate over ArrayList of jobs
-        for (int i = 0; i < someJobs.size(); i++) {
-            // iterate over HashMaps inside ArrayList
-            for (Map.Entry<String, String> job : IDontKnow.entrySet()) {
-
-                System.out.println("*****\n" +
-                        "position type: Data Scientist / Business Intelligence\n" +
-                        "name: Sr. IT Analyst (Data/BI)\n" +
-                        "employer: Bull Moose Industries\n" +
-                        "location: Saint Louis\n" +
-                        "core competency: Statistical Analysis\n" +
-                        "*****");
-            } 
+        if (someJobs.isEmpty()) {
+            System.out.println("No Results");
+            return;
+        }
+        for (HashMap<String, String> job : someJobs) {
+            String jobInfo = "\n*****\n";
+            for (Map.Entry<String, String> jobColumn : job.entrySet()) {
+                jobInfo += jobColumn.getKey() + ": " + jobColumn.getValue() + "\n";
+            }
+            jobInfo += "*****";
+            System.out.println(jobInfo);
+            }
         }
     }
-}
+

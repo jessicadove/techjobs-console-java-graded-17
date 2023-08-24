@@ -97,11 +97,15 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-
+            for (String key : row.keySet()) {
+                String aValue = row.get(key);
+                if (aValue.contains(value)) {
+                    jobs.add(row);
+                    break;
+                }
+            }
         }
-
-
-        return null;
+        return jobs;
     }
 
     /**
